@@ -4,8 +4,7 @@ class ProfilesController < ApplicationController
         # check which user is logged in:
         @user = User.find( params[:user_id] )
         # build a blank profile page for every user (thanks to the nested resource in the routes file):
-        @profile = @user.build_profile
-        #
+        @profile = Profile.new
     end
     
     def create
