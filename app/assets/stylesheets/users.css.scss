@@ -2,8 +2,12 @@
     -webkit-box-shadow: -2px 4px 7px 0px rgba(50, 50, 50, 0.68);
     -moz-box-shadow:    -2px 4px 7px 0px rgba(50, 50, 50, 0.68);
     box-shadow:         -2px 4px 7px 0px rgba(50, 50, 50, 0.68);
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
     border-radius: 50%;
     border: 3px solid #fff;
+    width: 128px;
+    height: 128px;
 }
 
 .job_title_icon {
@@ -34,3 +38,6 @@
   border-color: #4cae4c;
 }
 
+.well.white-bg {
+    background-color: #fff;
+}
