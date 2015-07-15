@@ -3,8 +3,27 @@ class ProfilesController < ApplicationController
     def new
         # check which user is logged in:
         @user = User.find(params[:user_id])
-        # build a profile for the user (thanks to the nested resource in the routes file):
+        # build a blank profile page for every user (thanks to the nested resource in the routes file):
         @profile = @user.build_profile
-        # 
+        #
     end
+    
+    def create
+        @user = User.find(params[:user_id])
+        # this build_profile will *create* a profile using whatever the user filled out in the blank form, above.
+          @profile = @user.build_profile(profile_params)
+        # save into database
+          if @profile.save
+            flash[:success] = "Profile Updated!"
+            redirect_to user_path (params[:user_id])
+          else
+            render action: :new
+          end
+    end
+    
+    # white listing params
+    private
+        def profile_params
+            params.require(:profile).permit(:first_name, :last_name, :job_title, :phone_number, :contact_email, :description)
+        end
 end
